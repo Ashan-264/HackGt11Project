@@ -231,7 +231,7 @@ const ScrTextChunker = () => {
 
         <Button>Generate Images</Button>
         <ExportButton>Export File</ExportButton>
-        
+        <a href="/FlashCards"><Button>Flash Cards</Button></a>
       </ContentWrapper>
     </Container>
   );
