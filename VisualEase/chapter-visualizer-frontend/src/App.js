@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './Pages/navbar';
 import TermDef from './Pages/termDef';
 import ScrTextChunker from "./Pages/ScrTextChunker";
+import FlashCards from './Pages/FlashCards';
 
 function App() {
     const [textInput, setTextInput] = useState('');
@@ -16,6 +17,7 @@ function App() {
             const response = await axios.post('http://localhost:5000/summarize', { chapterText: textInput });
             const parts = response.data; // Assuming response is an array of summarized parts
             setSummaries(parts);
+
 
             // Generate images for each summary
             parts.forEach(async (part, index) => {
@@ -35,6 +37,7 @@ function App() {
                 <Routes>
                     <Route path="/TermDef" element={<TermDef />} />
                     <Route path="/Text Chunker" element={<ScrTextChunker />} />
+                    <Route path="/FlashCards" element={<FlashCards />} />
                 </Routes>
                     
             </div>

@@ -50,34 +50,37 @@ const LevelInput = styled.input`
   margin-top: 20px;
 `;
 
-const TermsList = styled.div`
-  max-height: 300px;
-  overflow-y: auto;
+const TermsTable = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;  // Two columns, one for terms and one for definitions
+  gap: 15px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 15px;
 `;
 
-const TermDefinitionRow = styled.div`
-  display: flex;
-  justify-content: space-between;
+const TableHeader = styled.div`
+  font-weight: bold;
+  text-align: centre;
+`;
+
+const TermItem = styled.div`
   padding: 10px;
   border-bottom: 1px solid #e9e9e9;
-`;
 
-const TermColumn = styled.div`
-  flex: 1;
-  padding-right: 10px;
-`;
-
-const DefinitionColumn = styled.div`
-  flex: 2;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const TermText = styled.span`
   color: #333;
-  display: block;
+  font-weight: bold;
+`;
+
+const DefinitionText = styled.span`
+  color: #333;
 `;
 
 const Button = styled.button`
@@ -168,7 +171,7 @@ const ScrTextChunker = () => {
             placeholder="Enter or paste your text here..."
           />
 
-          <SectionTitle>Study Level</SectionTitle>
+          <SectionTitle>Study Level</SectionTitle>  {/* Add a title for the study level input */}
           <LevelInput
             type="text"
             value={studyLevel}
@@ -183,22 +186,25 @@ const ScrTextChunker = () => {
 
         <Section>
           <SectionTitle>Generated Terms & Definitions</SectionTitle>
-          <TermsList>
+          <TermsTable>
+            <TableHeader>Term</TableHeader>
+            <TableHeader>Definition</TableHeader>
             {terms.map((term, index) => (
-              <TermDefinitionRow key={index}>
-                <TermColumn>
-                  <TermText><strong>{term.termName}</strong></TermText>
-                </TermColumn>
-                <DefinitionColumn>
-                  <TermText>{term.definition}</TermText>
-                </DefinitionColumn>
-              </TermDefinitionRow>
+              <React.Fragment key={index}>
+                <TermItem>
+                  <TermText>{term.termName}</TermText>
+                </TermItem>
+                <TermItem>
+                  <DefinitionText>{term.definition}</DefinitionText>
+                </TermItem>
+              </React.Fragment>
             ))}
-          </TermsList>
+          </TermsTable>
         </Section>
 
         <Button>Generate Images</Button>
         <ExportButton>Export File</ExportButton>
+        
       </ContentWrapper>
     </Container>
   );
