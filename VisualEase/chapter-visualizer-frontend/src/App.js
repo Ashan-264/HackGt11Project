@@ -6,7 +6,6 @@ import Navbar from './Pages/navbar';
 import TermDef from './Pages/termDef';
 import ScrTextChunker from "./Pages/ScrTextChunker";
 import FlashCards from './Pages/FlashCards';
-=======
 import About from "./Pages/about";
 import Home from "./Pages/home";
 
