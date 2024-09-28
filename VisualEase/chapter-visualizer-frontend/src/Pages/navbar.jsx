@@ -32,6 +32,7 @@ export default function Navbar() {
       <div id="navRight" className="navRight">
         <ul>
           <li><a href="/visualize"><button component={Link} className="menuItem">Visualize</button></a></li>
+          <li><a href="/Text Chunker"><button component={Link} className="menuItem">TextChunker</button></a></li>
           <li><a href="/term"><button component={Link} className="menuItem">Term</button></a></li>
           <li><a href="/about"><button component={Link} className="menuItem">About</button></a></li>
         </ul>

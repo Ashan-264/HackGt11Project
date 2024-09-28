@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Pages/navbar';
 import TermDef from './Pages/termDef';
+import ScrTextChunker from "./Pages/ScrTextChunker";
 
 function App() {
     const [textInput, setTextInput] = useState('');
@@ -28,28 +29,14 @@ function App() {
 
     return (
         <div>
-            <h1>Chapter Visualizer</h1>
-            <textarea
-                value={textInput}
-                onChange={(e) => setTextInput(e.target.value)}
-                placeholder="Enter chapter text here..."
-            />
-            <button onClick={handleTextSubmit}>Submit</button>
-
-            <div>
-                {summaries.map((summary, index) => (
-                    <div key={index}>
-                        <p>{summary}</p>
-                        {images[index] && <img src={images[index]} alt={`Illustration for ${summary}`} />}
-                    </div>
-                ))}
-            </div>
             <Router>
             <div className="App">
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<TermDef />} />
+                    <Route path="/TermDef" element={<TermDef />} />
+                    <Route path="/Text Chunker" element={<ScrTextChunker />} />
                 </Routes>
+                    
             </div>
         </Router>
         </div>
