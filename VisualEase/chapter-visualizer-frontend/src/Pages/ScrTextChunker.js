@@ -193,6 +193,8 @@ const ScrTextChunker = ({ setTerms }) => {
 
     doc.save("terms_and_definitions.pdf");
   };
+  
+  document.title = "Term Finder - VisualEase";
 
   return (
     <Container>
