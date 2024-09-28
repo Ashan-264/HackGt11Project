@@ -1,0 +1,151 @@
+@media all and (min-width: 800px) {
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+        padding: 0 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+.navLeft {
+    display: flex;
+    align-items: center;
+}
+
+.navLeft a {
+    text-decoration: none;
+}
+
+.navLeft img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.navRight ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.menuItem {
+    padding: 0 15px;
+    border: solid 1px blue;
+}
+
+.menuItem:hover {
+    cursor: pointer;
+}
+
+/* mobile nav formatting begins */
+.burger {
+    display: none;
+}
+
+@media all and (max-width: 800px) {
+    .mobile {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+        padding: 0 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* menu burger begins */
+    .burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        transition: all 0.3s;
+        overflow-y: hidden;
+        margin-right: 10px;
+    }
+
+    .burger .bar {
+        height: 3px;
+        background-color: rgb(44, 44, 44);
+        transition: transform 0.5s ease;
+    }
+    /* open burger menu begins */
+    .toggle {
+        width: 30px;
+        height: 30px;
+        justify-content: center;
+    }
+
+    .toggle .line1 {
+        transform: rotate(-225deg) translate(4px, -3px);
+        width: 100%;
+    }
+
+    .toggle .line2 {
+        opacity: 0;
+    }
+
+    .toggle .line3 {
+        transform: rotate(-135deg) translate(2px, 0px);
+    }
+
+    /* open burger menu ends */
+    /* burger menu ends */
+
+    .navRight {
+        /* sets tabs as initially hidden */
+        display: none;
+        background-color: white;
+    }
+
+    .active {
+        /* shows tabs when burger menu clicked */
+        display: flex;
+    }
+
+    /* mobile tabs formatting begins */
+    .navRight {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .navRight ul {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .navRight ul li {
+        text-align: center;
+        padding: 15px;
+        animation: navLinkFade 1s;
+    }
+
+    .navRight ul li a {
+        margin: .5rem 1rem;
+    }
+
+    .navRight .active {
+        display: flex;
+    }
+
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* mobile tabs formatting ends */
+}
+
+/* mobile nav formatting ends */

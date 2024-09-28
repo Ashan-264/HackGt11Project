@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import './App.css';
+import Navbar from './Pages/navbar';
+import TermDef from './Pages/termDef';
 
 function App() {
     const [textInput, setTextInput] = useState('');
@@ -40,7 +44,16 @@ function App() {
                     </div>
                 ))}
             </div>
+            <Router>
+            <div className="App">
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<TermDef />} />
+                </Routes>
+            </div>
+        </Router>
         </div>
+        
     );
 }
 
