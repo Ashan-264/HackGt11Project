@@ -5,6 +5,8 @@ import './App.css';
 import Navbar from './Pages/navbar';
 import TermDef from './Pages/termDef';
 import ScrTextChunker from "./Pages/ScrTextChunker";
+import About from "./Pages/about";
+import Home from "./Pages/home";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -43,8 +45,10 @@ function App() {
             <div className="App">
                 <Navbar />
                 <Routes>
+                    <Route path="/" element={<Home />} />
                     <Route path="/TermDef" element={<TermDef />} />
                     <Route path="/Text Chunker" element={<ScrTextChunker />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
                     
             </div>
