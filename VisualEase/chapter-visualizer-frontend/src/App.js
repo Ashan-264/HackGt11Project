@@ -8,6 +8,7 @@ import ScrTextChunker from "./Pages/ScrTextChunker";
 import FlashCards from './Pages/FlashCards';
 import About from "./Pages/about";
 import Home from "./Pages/home";
+import IMGTest from "./Pages/imageGenTest";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -49,10 +50,11 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/TermDef" element={<TermDef />} />
-                    <Route path="/Text Chunker" element={<ScrTextChunker />} />
+                    <Route path="/visualize" element={<TermDef />} />
+                    <Route path="/termfinder" element={<ScrTextChunker />} />
                     <Route path="/FlashCards" element={<FlashCards />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/imgtest" element={<IMGTest />} />
                 </Routes>
                     
             </div>

@@ -18,6 +18,7 @@
 
 .sloganpt2 {
     background: -webkit-linear-gradient(20deg, #a4c9ef, #076ECD);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

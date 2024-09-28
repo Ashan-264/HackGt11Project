@@ -185,6 +185,8 @@ const ScrTextChunker = () => {
     setLoading(false);
   };
 
+  document.title = "Term Finder - VisualEase";
+
   return (
     <Container>
       <h1 style={{ marginBottom: '10px', marginTop: '0px' } }>Term Finder</h1>
