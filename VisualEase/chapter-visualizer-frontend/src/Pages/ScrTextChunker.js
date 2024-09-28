@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -30,13 +30,24 @@ const SectionTitle = styled.h2`
   font-size: 24px;
 `;
 
-const InputFile = styled.input`
+const TextInput = styled.textarea`
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 16px;
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
+  min-height: 100px;
+`;
+
+const LevelInput = styled.input`
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
 `;
 
 const TermsList = styled.div`
@@ -48,15 +59,25 @@ const TermsList = styled.div`
   padding: 15px;
 `;
 
-const TermItem = styled.div`
+const TermDefinitionRow = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid #e9e9e9;
 `;
 
+const TermColumn = styled.div`
+  flex: 1;
+  padding-right: 10px;
+`;
+
+const DefinitionColumn = styled.div`
+  flex: 2;
+`;
+
 const TermText = styled.span`
   color: #333;
+  display: block;
 `;
 
 const Button = styled.button`
@@ -83,31 +104,96 @@ const ExportButton = styled(Button)`
   }
 `;
 
-const App = () => {
+const ScrTextChunker = () => {
+  const [text, setText] = useState('');
+  const [studyLevel, setStudyLevel] = useState('Beginner');  // State for study level
+  const [terms, setTerms] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleGenerateTerms = async () => {
+    setLoading(true);
+
+    console.log("Input text:", text);
+    console.log("Study level:", studyLevel);  // Log the study level
+
+    try {
+      const response = await fetch('http://localhost:5001/extract_terms', {  // Directly call Flask backend
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text, level: studyLevel })
+      });
+
+      console.log("Request body:", { text, level: studyLevel });
+
+      const data = await response.json();
+
+      console.log("Response data:", data);
+
+      // Parse the returned string into individual terms and definitions
+      const parsedTerms = data.terms_and_definitions
+        .split(/\n\d+\.\s/)  // Split based on the numbered list pattern
+        .filter(entry => entry.trim() !== '')  // Remove empty entries
+        .map(entry => {
+          const match = entry.match(/^\*\*(.*?)\*\*:\s(.*)$/);
+          if (match) {
+            return { termName: match[1].trim(), definition: match[2].trim() };
+          } else {
+            return null;
+          }
+        })
+        .filter(item => item !== null);
+
+      if (parsedTerms.length === 0) {
+        console.warn("No terms were parsed.");
+        alert("No terms could be extracted. Please check the input and try again.");
+      }
+
+      setTerms(parsedTerms);
+    } catch (error) {
+      console.error("Error generating terms:", error);
+    }
+    setLoading(false);
+  };
+
   return (
     <Container>
       <ContentWrapper>
         <Section>
-          <SectionTitle>Input File</SectionTitle>
-          <InputFile type="file" />
+          <SectionTitle>Input Text</SectionTitle>
+          <TextInput
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Enter or paste your text here..."
+          />
+
+          <SectionTitle>Study Level</SectionTitle>
+          <LevelInput
+            type="text"
+            value={studyLevel}
+            onChange={(e) => setStudyLevel(e.target.value)}
+            placeholder="Enter study level (e.g., undergraduate, graduate, expert)"
+          />
+          
+          <Button onClick={handleGenerateTerms} disabled={loading || !text || !studyLevel}>
+            {loading ? "Generating..." : "Generate Terms"}
+          </Button>
         </Section>
 
         <Section>
           <SectionTitle>Generated Terms & Definitions</SectionTitle>
           <TermsList>
-            {/* This is where the terms and definitions will be mapped */}
-            <TermItem>
-              <TermText>A</TermText>
-              <TermText>Definition</TermText>
-            </TermItem>
-            <TermItem>
-              <TermText>B</TermText>
-              <TermText>Definition</TermText>
-            </TermItem>
-            <TermItem>
-              <TermText>C</TermText>
-              <TermText>Definition</TermText>
-            </TermItem>
+            {terms.map((term, index) => (
+              <TermDefinitionRow key={index}>
+                <TermColumn>
+                  <TermText><strong>{term.termName}</strong></TermText>
+                </TermColumn>
+                <DefinitionColumn>
+                  <TermText>{term.definition}</TermText>
+                </DefinitionColumn>
+              </TermDefinitionRow>
+            ))}
           </TermsList>
         </Section>
 
@@ -118,4 +204,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ScrTextChunker;
