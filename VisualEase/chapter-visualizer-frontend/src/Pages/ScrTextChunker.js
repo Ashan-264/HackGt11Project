@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
 
 const Container = styled.div`
   display: flex;
@@ -76,7 +79,7 @@ const TermsTable = styled.div`
 
 const TableHeader = styled.div`
   font-weight: bold;
-  text-align: centre;
+  text-align: center;
 `;
 
 const TermItem = styled.div`
@@ -132,20 +135,17 @@ const ExportButton = styled.button`
   }
 `;
 
-const ScrTextChunker = () => {
+const ScrTextChunker = ({ setTerms }) => {
   const [text, setText] = useState('');
-  const [studyLevel, setStudyLevel] = useState('Beginner');  // State for study level
-  const [terms, setTerms] = useState([]);
+  const [terms, localSetTerms] = useState([]);
+  const [studyLevel, setStudyLevel] = useState('Beginner');
   const [loading, setLoading] = useState(false);
 
   const handleGenerateTerms = async () => {
     setLoading(true);
 
-    console.log("Input text:", text);
-    console.log("Study level:", studyLevel);  // Log the study level
-
     try {
-      const response = await fetch('http://localhost:5001/extract_terms', {  // Directly call Flask backend
+      const response = await fetch('http://localhost:5001/extract_terms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -153,16 +153,11 @@ const ScrTextChunker = () => {
         body: JSON.stringify({ text, level: studyLevel })
       });
 
-      console.log("Request body:", { text, level: studyLevel });
-
       const data = await response.json();
 
-      console.log("Response data:", data);
-
-      // Parse the returned string into individual terms and definitions
       const parsedTerms = data.terms_and_definitions
-        .split(/\n\d+\.\s/)  // Split based on the numbered list pattern
-        .filter(entry => entry.trim() !== '')  // Remove empty entries
+        .split(/\n\d+\.\s/)
+        .filter(entry => entry.trim() !== '')
         .map(entry => {
           const match = entry.match(/^\*\*(.*?)\*\*:\s(.*)$/);
           if (match) {
@@ -174,10 +169,10 @@ const ScrTextChunker = () => {
         .filter(item => item !== null);
 
       if (parsedTerms.length === 0) {
-        console.warn("No terms were parsed.");
         alert("No terms could be extracted. Please check the input and try again.");
       }
 
+      localSetTerms(parsedTerms);
       setTerms(parsedTerms);
     } catch (error) {
       console.error("Error generating terms:", error);
@@ -185,9 +180,23 @@ const ScrTextChunker = () => {
     setLoading(false);
   };
 
+  const handleExportToPDF = () => {
+    const doc = new jsPDF();
+
+    doc.text("Generated Terms & Definitions", 10, 10);
+    
+    doc.autoTable({
+      head: [['Term', 'Definition']],
+      body: terms.map(term => [term.termName, term.definition]),
+      startY: 20,
+    });
+
+    doc.save("terms_and_definitions.pdf");
+  };
+
   return (
     <Container>
-      <h1 style={{ marginBottom: '10px', marginTop: '0px' } }>Term Finder</h1>
+      <h1 style={{ marginBottom: '10px', marginTop: '0px' }}>Term Finder</h1>
       <p style={{ marginTop: '0px' }}>Use our term finder to generate terms based on textbook pages, articles, and more!</p>
       <ContentWrapper>
         <Section>
@@ -198,7 +207,7 @@ const ScrTextChunker = () => {
             placeholder="Enter or paste your text here..."
           />
 
-          <SectionTitle>Study Level</SectionTitle>  {/* Add a title for the study level input */}
+          <SectionTitle>Study Level</SectionTitle>
           <LevelInput
             type="text"
             value={studyLevel}
@@ -228,10 +237,13 @@ const ScrTextChunker = () => {
             ))}
           </TermsTable>
         </Section>
-
+        
         <Button>Generate Images</Button>
-        <ExportButton>Export File</ExportButton>
-        <a href="/FlashCards"><Button>Flash Cards</Button></a>
+        <ExportButton onClick={handleExportToPDF}>Export to PDF</ExportButton>
+        
+        <Link to="/flashcards">
+          <Button>Flash Cards</Button>
+        </Link>
       </ContentWrapper>
     </Container>
   );
