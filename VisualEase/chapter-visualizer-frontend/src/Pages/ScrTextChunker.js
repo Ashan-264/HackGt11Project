@@ -59,13 +59,25 @@ const TermsList = styled.div`
   padding: 15px;
 `;
 
-const TermItem = styled.div`
+const TermDefinitionRow = styled.div`
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid #e9e9e9;
 `;
 
+const TermColumn = styled.div`
+  flex: 1;
+  padding-right: 10px;
+`;
+
+const DefinitionColumn = styled.div`
+  flex: 2;
+`;
+
 const TermText = styled.span`
   color: #333;
+  display: block;
 `;
 
 const Button = styled.button`
@@ -94,7 +106,7 @@ const ExportButton = styled(Button)`
 
 const ScrTextChunker = () => {
   const [text, setText] = useState('');
-  const [studyLevel, setStudyLevel] = useState('Begginer');  // State for study level
+  const [studyLevel, setStudyLevel] = useState('Beginner');  // State for study level
   const [terms, setTerms] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -156,7 +168,7 @@ const ScrTextChunker = () => {
             placeholder="Enter or paste your text here..."
           />
 
-          <SectionTitle>Study Level</SectionTitle>  {/* Add a title for the study level input */}
+          <SectionTitle>Study Level</SectionTitle>
           <LevelInput
             type="text"
             value={studyLevel}
@@ -173,9 +185,14 @@ const ScrTextChunker = () => {
           <SectionTitle>Generated Terms & Definitions</SectionTitle>
           <TermsList>
             {terms.map((term, index) => (
-              <TermItem key={index}>
-                <TermText><strong>{term.termName}:</strong> {term.definition}</TermText>
-              </TermItem>
+              <TermDefinitionRow key={index}>
+                <TermColumn>
+                  <TermText><strong>{term.termName}</strong></TermText>
+                </TermColumn>
+                <DefinitionColumn>
+                  <TermText>{term.definition}</TermText>
+                </DefinitionColumn>
+              </TermDefinitionRow>
             ))}
           </TermsList>
         </Section>
