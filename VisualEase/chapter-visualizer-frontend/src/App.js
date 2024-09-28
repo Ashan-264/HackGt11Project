@@ -13,18 +13,17 @@ import IMGTest from "./Pages/imageGenTest";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 function App() {
     const [textInput, setTextInput] = useState('');
     const [summaries, setSummaries] = useState([]);
     const [images, setImages] = useState({});
+    const [terms, setTerms] = useState([]);  // New state for storing terms
 
     const handleTextSubmit = async () => {
         try {
             const response = await axios.post('http://localhost:5000/summarize', { chapterText: textInput });
             const parts = response.data; // Assuming response is an array of summarized parts
             setSummaries(parts);
-
 
             // Generate images for each summary
             parts.forEach(async (part, index) => {
@@ -51,16 +50,19 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/visualize" element={<TermDef />} />
-                    <Route path="/termfinder" element={<ScrTextChunker />} />
-                    <Route path="/FlashCards" element={<FlashCards />} />
+                    <Route 
+                        path="/termfinder" 
+                        element={<ScrTextChunker setTerms={setTerms} />}  // Pass setTerms to ScrTextChunker
+                    />
+                    <Route 
+                        path="/FlashCards" 
+                        element={<FlashCards terms={terms} />}  // Pass terms to FlashCards
+                    />
                     <Route path="/about" element={<About />} />
-                    <Route path="/imgtest" element={<IMGTest />} />
                 </Routes>
-                    
             </div>
         </Router>
         </div>
-        
     );
 }
 
