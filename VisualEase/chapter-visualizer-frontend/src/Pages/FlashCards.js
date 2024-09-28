@@ -100,6 +100,9 @@ const Button = styled.button`
 `;
 
 const Flashcards = ({ terms = [] }) => {  // Ensure terms defaults to an empty array if undefined
+
+  document.title = "Flashcards - VisualEase";
+
   return (
     <Container>
       <ContentWrapper>
