@@ -6,7 +6,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background-color: #f4f4f4;
+  background-color: #000;
   min-height: 100vh;
   box-sizing: border-box;
 `;
@@ -15,39 +15,53 @@ const ContentWrapper = styled.div`
   width: 100%;
   max-width: 1200px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 `;
 
 const Section = styled.section`
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 1000px;
 `;
 
 const SectionTitle = styled.h2`
   margin-bottom: 20px;
-  color: #333;
-  font-size: 24px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: normal;
 `;
 
 const TextInput = styled.textarea`
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
   font-size: 16px;
   width: 100%;
+  box-sizing: border-box;
   max-width: 100%;
   min-height: 100px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.021);
+  padding: 7px;
+  color: white;
 `;
 
 const LevelInput = styled.input`
-  padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 16px;
   width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
   max-width: 100%;
-  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.021);
+  padding: 7px;
+  color: white;
 `;
 
 const TermsTable = styled.div`
@@ -84,26 +98,37 @@ const DefinitionText = styled.span`
 `;
 
 const Button = styled.button`
-  margin-top: 20px;
-  padding: 15px 25px;
-  background-color: #007bff;
+  font-family: 'Work Sans';
+  margin: 30px 10px 20px 10px;
+  padding: 10px 30px;
+  background: -webkit-linear-gradient(45deg, rgb(12, 116, 214), rgb(69, 132, 191));
+  border: solid 1px rgba(204, 223, 234, 0.236);
   color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  border-radius: 100px;
+  font-size: 16px;
+  transition: all 0.75s ease;
 
   &:hover {
-    background-color: #0056b3;
+  filter: brightness(130%);
+  cursor: pointer;
   }
 `;
 
-const ExportButton = styled(Button)`
-  background-color: #28a745;
+const ExportButton = styled.button`
+  font-family: 'Work Sans';
+  margin: 10px 10px 50px 10px;
+  padding: 10px 30px;
+  background: none;
+  border: solid 1px #007bff;
+  color: white;
+  border-radius: 100px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  transition: all 0.75s ease;
 
   &:hover {
-    background-color: #218838;
+    border: solid 1px #54a6ff;
   }
 `;
 
@@ -162,6 +187,8 @@ const ScrTextChunker = () => {
 
   return (
     <Container>
+      <h1 style={{ marginBottom: '10px', marginTop: '0px' } }>Term Finder</h1>
+      <p style={{ marginTop: '0px' }}>Use our term finder to generate terms based on textbook pages, articles, and more!</p>
       <ContentWrapper>
         <Section>
           <SectionTitle>Input Text</SectionTitle>
