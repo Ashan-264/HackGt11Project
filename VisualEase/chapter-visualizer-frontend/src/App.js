@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Pages/navbar';
 import TermDef from './Pages/termDef';
 import ScrTextChunker from "./Pages/ScrTextChunker";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
     const [textInput, setTextInput] = useState('');
@@ -26,6 +29,13 @@ function App() {
             console.error('Error processing text:', error);
         }
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+          AOS.init();
+        }, 120);
+        AOS.refresh();
+      }, []); // a library for transitions
 
     return (
         <div>

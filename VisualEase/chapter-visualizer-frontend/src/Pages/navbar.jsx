@@ -16,8 +16,7 @@ export default function Navbar() {
       <div className="mobile">
 
         <div className="navLeft">
-          <div><a href="/"><img src={logo} /></a></div>
-          <div><a href="/"><h1><span style={{ color: '#000000' }}>Visual</span><span style={{ color: '#000000' }}>Ease</span></h1></a></div>
+          <div><a href="/"><h1><span style={{ color: '#FFFFFF' }}>VISUAL</span><span className="logopt2">EASE</span></h1></a></div>
         </div>
 
         <a id="burger" onClick={toggleNav} className="toggle-button burger burgerinitial">
@@ -31,9 +30,8 @@ export default function Navbar() {
 
       <div id="navRight" className="navRight">
         <ul>
-          <li><a href="/visualize"><button component={Link} className="menuItem">Visualize</button></a></li>
-          <li><a href="/Text Chunker"><button component={Link} className="menuItem">TextChunker</button></a></li>
-          <li><a href="/term"><button component={Link} className="menuItem">Term</button></a></li>
+          <li><a href="/TermDef"><button component={Link} className="menuItem">Visualize Terms</button></a></li>
+          <li><a href="/Text Chunker"><button component={Link} className="menuItem">Term Finder</button></a></li>
           <li><a href="/about"><button component={Link} className="menuItem">About</button></a></li>
         </ul>
       </div>
