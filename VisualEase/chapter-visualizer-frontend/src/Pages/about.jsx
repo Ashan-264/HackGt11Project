@@ -3,7 +3,7 @@ import "./about.css"
 
 export default function about() {
 
-    document.title = "About Us - VisualEase";
+    document.title = "About - VisualEase";
 
     return (
         <div className="aboutContainer">
