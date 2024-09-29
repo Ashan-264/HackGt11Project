@@ -20,21 +20,13 @@ To further support memorization, Visual Ease offers the unique capability to cre
 Visual Ease transforms traditional study methods by integrating visual learning principles, making it an invaluable tool for students, educators, and lifelong learners alike. Whether you're preparing for exams or seeking to master new topics, Visual Ease empowers you to learn with ease and efficiency.
 
 ## How we built it
-**Frontend**
+**Frontend**: HTML, CSS
 
-HTML, CSS
+**Backend**: Python, JavaScript
 
-**Backend**
+**Frameworks**: LLAMA 3, NodeJS, Flask
 
-Python, JavaScript
-
-**Frameworks**
-
-LLAMA 3, NodeJS, Flask
-
-**APIs**
-
-GROQ, Flux.1 (Black Forest labs), Hugging Face
+**APIs**: GROQ, Flux.1 (Black Forest labs), Hugging Face
 
 ## Challenges we ran into
 During the hackathon, our team encountered several challenges that tested our technical skills and collaboration. One major hurdle was sourcing specific AI tools that aligned with our project needs, particularly finding tokenized APIs with low processing times. We spent considerable time researching and evaluating various options to ensure they would effectively support our dynamic flashcard generation feature. Additionally, managing Git branches proved tricky as we worked across different platforms, necessitating clear communication to prevent conflicts. Connecting API keys to our backend and ensuring seamless integration between API requests and frontend elements, such as buttons and user responses, required meticulous attention to detail. This intricate process of linking all components underscored the importance of teamwork and adaptability in overcoming obstacles and achieving our project goals.
