@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Directly include your API token in the script
-hf_token = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+hf_token = "xxxxxxxxxxxxxxxxxxxxxxxxxx" // Enter API Key
 
 # Set up the client with the specific model
 client = Client("black-forest-labs/FLUX.1-schnell", hf_token=hf_token)
