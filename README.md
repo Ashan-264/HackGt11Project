@@ -6,22 +6,31 @@ Inspired by popular tools like Quizlet, Visual Ease generates customised flashca
 
 ## What it does
 **Dynamic Flashcard Generation**
+
 Input any term-definition pair, and Visual Ease creates a visually appealing flashcard complete with a relevant image. This feature harnesses the Picture Superiority Effect, which states that people are more likely to remember information presented as images rather than text alone. By associating each term with a striking visual, users can enhance their recall.
+
 **Text File Segmentation**
+
 Users can upload large text files, and the application will intelligently segment the content to extract terms and definitions. For each term, Visual Ease generates a corresponding image, making it easier to digest extensive material in manageable chunks.
+
 **Analogy and Metaphor Imagery***
+
 To further support memorization, Visual Ease offers the unique capability to create analogy or metaphor images. For example, when learning about parts of the brain, the app might depict the brain as a house, with each part representing different rooms. This taps into Eidetic Memory, a phenomenon where individuals can recall images with high precision. By crafting these metaphorical visuals, users can deepen their understanding and retention of complex concepts.
 
 Visual Ease transforms traditional study methods by integrating visual learning principles, making it an invaluable tool for students, educators, and lifelong learners alike. Whether you're preparing for exams or seeking to master new topics, Visual Ease empowers you to learn with ease and efficiency.
 
 ## How we built it
 **Frontend**
+
 HTML, CSS
 **Backend**
+
 Python, JavaScript
 **Frameworks**
+
 LLAMA 3, NodeJS, Flask
 **APIs**
+
 GROQ, Flux.1 (Black Forest labs), Hugging Face
 
 ## Challenges we ran into
