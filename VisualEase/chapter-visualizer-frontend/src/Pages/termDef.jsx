@@ -28,7 +28,7 @@ export default function termDef() {
   const handleGenerateImage = async () => {
     try {
       const response = await axios.post('http://localhost:5000/generate-image', {
-        text: `${term} - ${definition}`,
+        text: `${term} ${definition}`,
       });
       const imageData = await response.blob();
       setImage(URL.createObjectURL(imageData));
