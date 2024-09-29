@@ -6,7 +6,7 @@ export default function about() {
     document.title = "About - VisualEase";
 
     return (
-        <div className="aboutContainer">
+        <div className="aboutContainer" data-aos="fade-zoom-in" data-aos-duration="1500">
             <div class="aboutTop">
                 <h1 style={{ fontSize: '60px', fontWeight: 'normal' }}>Visual<span className="blueGradient">Ease</span> Overview</h1>
                 <p style={{ fontSize: '20px', marginBottom: '40px' }}>VisualEase is an innovative web application designed to enhance learning and retention through the power of visual aids. Inspired by popular tools like Quizlet, VisualEase generates customised flashcards that pair terms with vivid images, optimising the study experience for users.</p>

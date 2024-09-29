@@ -22,9 +22,9 @@ export default function termDef() {
   return (
     <div className="pageContainerContainer">
       <div className="pageContainer">
-        <h1 className="title">Term Visualizer</h1>
-        <p className="subTitle">Use our term visualizer to create images that represent your study terms or create analogies to remember term definitions.</p>
-        <div className="container" data-aos="fade-up">
+        <h1 className="title" data-aos="fade-zoom-in" data-aos-duration="1500">Term Visualizer</h1>
+        <p className="subTitle" data-aos="fade-zoom-in" data-aos-duration="1500">Use our term visualizer to create images that represent your study terms or create analogies to remember term definitions.</p>
+        <div className="container" data-aos="fade-up" data-aos-duration="1500">
           <div className="container1">
             <p style={{ marginTop: '0px' }}>Input Term</p>
             <textarea placeholder="e.g., Mitochondria"></textarea>
@@ -53,7 +53,7 @@ export default function termDef() {
               <label style={{ marginLeft: '5px' }} for="analogy">Analogy</label>
               <p id="description"></p>
               <div id="analogyBox" className="active">
-                <p>Analogy Box</p>
+                <p>Analogy Details</p>
                 <textarea style={{ height: '120px' }} placeholder="e.g., Compare the mitochondria to a part of the human body."></textarea>
               </div>
 
@@ -62,7 +62,7 @@ export default function termDef() {
           </div>
 
         </div>
-        <button className="generate">Generate Image</button>
+        <button className="generate" data-aos="fade-zoom-in" data-aos-duration="1500" data-aos-offset="0">Generate Image</button>
       </div>
     </div>
   )

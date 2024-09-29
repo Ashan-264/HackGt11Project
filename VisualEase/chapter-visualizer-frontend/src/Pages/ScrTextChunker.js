@@ -184,7 +184,7 @@ const ScrTextChunker = ({ setTerms }) => {
     const doc = new jsPDF();
 
     doc.text("Generated Terms & Definitions", 10, 10);
-    
+
     doc.autoTable({
       head: [['Term', 'Definition']],
       body: terms.map(term => [term.termName, term.definition]),
@@ -193,61 +193,70 @@ const ScrTextChunker = ({ setTerms }) => {
 
     doc.save("terms_and_definitions.pdf");
   };
-  
+
   document.title = "Term Finder - VisualEase";
 
   return (
+
     <Container>
-      <h1 style={{ marginBottom: '10px', marginTop: '0px' }}>Term Finder</h1>
-      <p style={{ marginTop: '0px' }}>Use our term finder to generate terms based on textbook pages, articles, and more!</p>
+      <div data-aos="fade-zoom-in" data-aos-duration="1500">
+        <h1 style={{ marginBottom: '10px', marginTop: '0px' }}>Term Finder</h1>
+        <p style={{ marginTop: '0px' }}>Use our term finder to generate terms based on textbook pages, articles, and more!</p>
+      </div>
+
       <ContentWrapper>
-        <Section>
-          <SectionTitle>Input Text</SectionTitle>
-          <TextInput
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Enter or paste your text here..."
-          />
+        <div data-aos="fade-up" data-aos-duration="1500">
+          <Section>
+            <SectionTitle>Input Text</SectionTitle>
+            <TextInput
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter or paste your text here..."
+            />
 
-          <SectionTitle>Study Level</SectionTitle>
-          <LevelInput
-            type="text"
-            value={studyLevel}
-            onChange={(e) => setStudyLevel(e.target.value)}
-            placeholder="Enter study level (e.g., undergraduate, graduate, expert)"
-          />
-          
-          <Button onClick={handleGenerateTerms} disabled={loading || !text || !studyLevel}>
-            {loading ? "Generating..." : "Generate Terms"}
-          </Button>
-        </Section>
+            <SectionTitle>Study Level</SectionTitle>
+            <LevelInput
+              type="text"
+              value={studyLevel}
+              onChange={(e) => setStudyLevel(e.target.value)}
+              placeholder="Enter study level (e.g., undergraduate, graduate, expert)"
+            />
 
-        <Section>
-          <SectionTitle>Generated Terms & Definitions</SectionTitle>
-          <TermsTable>
-            <TableHeader>Term</TableHeader>
-            <TableHeader>Definition</TableHeader>
-            {terms.map((term, index) => (
-              <React.Fragment key={index}>
-                <TermItem>
-                  <TermText>{term.termName}</TermText>
-                </TermItem>
-                <TermItem>
-                  <DefinitionText>{term.definition}</DefinitionText>
-                </TermItem>
-              </React.Fragment>
-            ))}
-          </TermsTable>
-        </Section>
-        
+            <Button onClick={handleGenerateTerms} disabled={loading || !text || !studyLevel}>
+              {loading ? "Generating..." : "Generate Terms"}
+            </Button>
+          </Section>
+        </div>
+
+        <div data-aos="fade-up" data-aos-duration="1500">
+          <Section >
+            <SectionTitle>Generated Terms & Definitions</SectionTitle>
+            <TermsTable>
+              <TableHeader>Term</TableHeader>
+              <TableHeader>Definition</TableHeader>
+              {terms.map((term, index) => (
+                <React.Fragment key={index}>
+                  <TermItem>
+                    <TermText>{term.termName}</TermText>
+                  </TermItem>
+                  <TermItem>
+                    <DefinitionText>{term.definition}</DefinitionText>
+                  </TermItem>
+                </React.Fragment>
+              ))}
+            </TermsTable>
+          </Section>
+        </div>
+
         <Button>Generate Images</Button>
         <ExportButton onClick={handleExportToPDF}>Export to PDF</ExportButton>
-        
+
         <Link to="/flashcards">
-          <Button>Flash Cards</Button>
+          <Button>Flash Cards &gt;&gt;</Button>
         </Link>
       </ContentWrapper>
     </Container>
+
   );
 };
 
