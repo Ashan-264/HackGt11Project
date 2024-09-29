@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Import axios for making API calls
 import "./termDef.css"
 
 export default function termDef() {
 
   document.title = "Term Visualizer - VisualEase";
+
+  const [term, setTerm] = useState('');
+  const [definition, setDefinition] = useState('');
+  const [analogy, setAnalogy] = useState('');
+  const [image, setImage] = useState(null);
 
   const addAnalogyBox = () => {
     var analogyBox = document.getElementById("analogyBox");
@@ -19,6 +25,28 @@ export default function termDef() {
     paragraph.innerText = "Generate an analogy image of your term and definition.";
   };
 
+  const handleGenerateImage = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/generate-image', {
+        text: `${term} - ${definition}`,
+      });
+      const imageData = await response.blob();
+      setImage(URL.createObjectURL(imageData));
+    } catch (error) {
+      console.error('Error generating image:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    if (e.target.name === 'term') {
+      setTerm(e.target.value);
+    } else if (e.target.name === 'definition') {
+      setDefinition(e.target.value);
+    } else if (e.target.name === 'analogy') {
+      setAnalogy(e.target.value);
+    }
+  };
+
   return (
     <div className="pageContainerContainer">
       <div className="pageContainer">
@@ -27,9 +55,20 @@ export default function termDef() {
         <div className="container" data-aos="fade-up">
           <div className="container1">
             <p style={{ marginTop: '0px' }}>Input Term</p>
-            <textarea placeholder="e.g., Mitochondria"></textarea>
+            <textarea
+              name="term"
+              placeholder="e.g., Mitochondria"
+              value={term}
+              onChange={handleInputChange}
+            />
             <p>Input Definition</p>
-            <textarea style={{ height: '140px' }} placeholder="e.g., The powerhouse of a cell."></textarea>
+            <textarea
+              name="definition"
+              style={{ height: '140px' }}
+              placeholder="e.g., The powerhouse of a cell."
+              value={definition}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="container2">
             <form action="/action_page.php">
@@ -54,7 +93,13 @@ export default function termDef() {
               <p id="description"></p>
               <div id="analogyBox" className="active">
                 <p>Analogy Box</p>
-                <textarea style={{ height: '120px' }} placeholder="e.g., Compare the mitochondria to a part of the human body."></textarea>
+                <textarea
+                  name="analogy"
+                  style={{ height: '120px' }}
+                  placeholder="e.g., Compare the mitochondria to a part of the human body."
+                  value={analogy}
+                  onChange={handleInputChange}
+                />
               </div>
 
             </form>
@@ -62,7 +107,8 @@ export default function termDef() {
           </div>
 
         </div>
-        <button className="generate">Generate Image</button>
+        <button className="generate" onClick={handleGenerateImage}>Generate Image</button>
+        {image && <img src={image} alt="Generated Image" />}
       </div>
     </div>
   )
