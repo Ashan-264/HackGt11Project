@@ -1,14 +1,17 @@
 import React from 'react'
 import "./navbar.css"
 import { Link } from "react-router-dom";
-import logo from '../logo.svg'
 
 export default function Navbar() {
   const toggleNav = () => {
     var navRightElement = document.getElementById("navRight");
-    navRightElement.classList.toggle("active");
     var burgerElement = document.getElementById("burger");
     burgerElement.classList.toggle("toggle");
+    if (navRightElement.style.display === 'none' || navRightElement.style.display === '') {
+        navRightElement.style.display = 'flex'; // Show the nav
+    } else {
+        navRightElement.style.display = 'none'; // Hide the nav
+    }
   }
 
   return (
