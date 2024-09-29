@@ -23,12 +23,15 @@ Visual Ease transforms traditional study methods by integrating visual learning 
 **Frontend**
 
 HTML, CSS
+
 **Backend**
 
 Python, JavaScript
+
 **Frameworks**
 
 LLAMA 3, NodeJS, Flask
+
 **APIs**
 
 GROQ, Flux.1 (Black Forest labs), Hugging Face
