@@ -19,6 +19,8 @@ To further support memorization, Visual Ease offers the unique capability to cre
 
 Visual Ease transforms traditional study methods by integrating visual learning principles, making it an invaluable tool for students, educators, and lifelong learners alike. Whether you're preparing for exams or seeking to master new topics, Visual Ease empowers you to learn with ease and efficiency.
 
+Link to the pitch deck : https://gamma.app/docs/VisualEase-Revolutionizing-Learning-Through-Visual-Aids-3o46y7fx7ek5ntb
+
 ## How we built it
 **Frontend**: HTML, CSS
 
