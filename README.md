@@ -13,7 +13,7 @@ Input any term-definition pair, and Visual Ease creates a visually appealing fla
 
 Users can upload large text files, and the application will intelligently segment the content to extract terms and definitions. For each term, Visual Ease generates a corresponding image, making it easier to digest extensive material in manageable chunks.
 
-**Analogy and Metaphor Imagery***
+**Analogy and Metaphor Imagery**
 
 To further support memorization, Visual Ease offers the unique capability to create analogy or metaphor images. For example, when learning about parts of the brain, the app might depict the brain as a house, with each part representing different rooms. This taps into Eidetic Memory, a phenomenon where individuals can recall images with high precision. By crafting these metaphorical visuals, users can deepen their understanding and retention of complex concepts.
 
