@@ -3,7 +3,7 @@
     width: 100%;
     background-size: cover;
     background-position: bottom;
-    height: calc(90vh - 70px);
+    min-height: calc(90vh - 70px);
     padding-top: 10vh;
 }
 
@@ -43,4 +43,32 @@
 .tryButton:hover {
     filter: brightness(130%);
     cursor: pointer;
+}
+
+@media all and (max-width: 990px) {
+    .slogan {
+        font-size: 70px;
+    }
+    .homeSubTitle {
+        font-size: 18px;
+    }
+    .tryButton {
+        padding: 10px 20px;
+        margin: 20px auto 30px auto;
+        font-size: 20px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .slogan {
+        font-size: 60px;
+    }
+    .homeSubTitle {
+        font-size: 16px;
+    }
+    .tryButton {
+        padding: 10px 20px;
+        margin: 20px auto 40px auto;
+        font-size: 20px;
+    }
 }

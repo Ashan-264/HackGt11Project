@@ -7,10 +7,10 @@ export default function home() {
 
   return (
     <div className="homeContainer">
-      <p class="homeTitle" data-aos="fade-up" data-aos-duration="3000">Welcome to VisualEase!</p>
+      <div style={{paddingLeft: '20px', paddingRight: '20px'}}><p class="homeTitle">Welcome to VisualEase!</p></div>
       <h1 className="slogan" data-aos="fade-up" data-aos-duration="3000">Visualizing, made <span className="sloganpt2">easy</span></h1>
-      <p data-aos="fade-up" data-aos-duration="3000">Transform your boring textbook to simple terms and definitions or images for you to study woo.</p>
-      <a href="/visualize"><button class="tryButton" data-aos="fade-up" data-aos-duration="3000">Try it now!</button></a>
+      <p className="homeSubTitle"style={{paddingLeft: '20px', paddingRight: '20px'}}>Transform your boring textbook to simple terms and definitions or images for you to study woo.</p>
+      <a href="/visualize"><button class="tryButton">Try it now!</button></a>
     </div>
   )
 }
