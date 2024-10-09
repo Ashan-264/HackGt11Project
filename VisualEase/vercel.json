@@ -9,5 +9,11 @@
       { "src": "/app1(.*)", "dest": "backend/GroqAPI/app.py" },
       { "src": "/app2(.*)", "dest": "backend/api/Image_Generator.py" },
       { "src": "/(.*)", "dest": "frontend/src/index.js" }
-    ]
+    ],
+        "functions": {
+            "api/**": {
+                "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+            }
+        }
+
   }
