@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./termDef.css";
-import axios from 'axios';
+import axios from 'axios'; //updated push request
+
 
 export default function TermDef() {
   document.title = "Term Visualizer - VisualEase";
