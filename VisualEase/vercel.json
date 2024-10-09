@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "backend/GroqAPI/app.py", "use": "@vercel/python" },
+      { "src": "backend/api/Image_Generator.py", "use": "@vercel/python" },
+      { "src": "frontend/index.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/app1(.*)", "dest": "backend/GroqAPI/app.py" },
+      { "src": "/app2(.*)", "dest": "backend/api/Image_Generator.py" },
+      { "src": "/(.*)", "dest": "frontend/index.js" }
+    ]
+  }

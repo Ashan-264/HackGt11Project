@@ -48,5 +48,5 @@ def extract_terms():
     
     return jsonify({"terms_and_definitions": result})
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)  # Run Flask on port 5001
+#if __name__ == '__main__':
+    #app.run(debug=True, port=5001)  # Run Flask on port 5001
