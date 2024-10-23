@@ -1,5 +1,8 @@
 # HackGt11Project
 
+## Devpost Submission
+https://devpost.com/software/visualease
+
 ## Inspiration
 Inspired by popular tools like Quizlet, Visual Ease generates customised flashcards that pair terms with vivid images, optimising the study experience for users.
 
